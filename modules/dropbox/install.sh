@@ -5,5 +5,5 @@ function describe_actions() {
 }
 
 function install() {
-  install_app_from_dmg "https://www.dropbox.com/download?os=mac" "Dropbox.app"
+  install_app_from_dmg "https://edge.dropboxstatic.com/dbx-releng/client/Dropbox%20108.4.453.dmg" "Dropbox.app"
 }

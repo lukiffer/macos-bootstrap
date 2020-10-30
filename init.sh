@@ -32,7 +32,10 @@ function clone_repository() {
 
 function run_bootstrap() {
   echo "Running the bootstrap script..."
-  bash -c ~/.macos-bootstrap/bootstrap.sh
+  set -e
+  pushd ~/.macos-bootstrap/
+    ./bootstrap.sh
+  popd
 }
 
 function init() {

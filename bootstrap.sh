@@ -9,7 +9,7 @@ SCRIPT_PATH="$(
 
 function run_module() {
   local -r module_name="$1"
-  local -r mutex_path="$PWD/.macosbs-mutex--$module_name"
+  local -r mutex_path="$HOME/.macos-bootstrap/.macosbs-mutex--$module_name"
 
   # Check if a mutex for a module exists; don't run the same module again
   if [ -f "$mutex_path" ]; then
