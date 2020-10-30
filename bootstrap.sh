@@ -83,7 +83,7 @@ function bootstrap() {
   # We're installing bash to allow subsequent modules to use bash 4/5 features.
   run_module "bash"
 
-  # Install OhMyZsh and related shell plugins
+  # Install Oh My Zsh and related shell plugins
   run_module "zsh"
   run_module "zsh-powerline"
   run_module "zsh-auto-suggestions"
