@@ -12,10 +12,10 @@ function describe_actions() {
 
 function install() {
   install_homebrew_package "terragrunt"
-  install_homebrew_package "tfenv"
 
   brew unlink terraform
 
+  install_homebrew_package "tfenv"
   install_homebrew_package "tfsec"
 
   tfenv install 0.12.29
