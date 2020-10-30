@@ -2,8 +2,8 @@
 
 function describe_actions() {
   echo "   📦  Install the latest terragrunt package from Homebrew"
-  echo "   📦  Install the latest tfenv package from Homebrew"
   echo "   🛠  Unlink Homebrew-managed terraform binary"
+  echo "   📦  Install the latest tfenv package from Homebrew"
   echo "   📦  Install the latest tfsec package from Homebrew"
   echo "   📦  Install terraform 0.12.29"
   echo "   📦  Install terraform 0.13.5"
