@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   📦  Installs the latest google-cloud-sdk package from Homebrew"
+  echo "   📦  Install the latest google-cloud-sdk package from Homebrew"
 }
 
 function install() {

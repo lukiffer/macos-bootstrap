@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   📦  Installs the AWS CLI"
+  echo "   📦  Install the AWS CLI"
 }
 
 function install() {

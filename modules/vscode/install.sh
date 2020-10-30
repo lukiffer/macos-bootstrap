@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   📦  Installs Visual Studio Code"
+  echo "   📦  Install Visual Studio Code"
 }
 
 function install() {

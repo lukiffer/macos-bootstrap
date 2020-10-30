@@ -59,7 +59,8 @@ function verify_dropbox() {
     echo "This could be because Dropbox is not installed or you're not logged in."
     run_module "dropbox"
     echo ""
-    echo "You'll need to sign-in to Dropbox, then re-run this script."
+    echo "You'll need to sign-in to Dropbox, then re-run this script:"
+    echo "  ~/.macos-bootstrap/bootstrap.sh"
     exit 0
   else
     echo "Verified Dropbox mount."

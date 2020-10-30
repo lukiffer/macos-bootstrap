@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   🛠  Unlinks current python installation"
-  echo "   📦  Installs the latest pyenv package from Homebrew"
-  echo "   📦  Installs python 3.8.6 (AWS and GCP serverless supported runtime)"
-  echo "   🛠  Sets python 3.8.6 as the default system runtime"
+  echo "   🛠  Unlink current python installation"
+  echo "   📦  Install the latest pyenv package from Homebrew"
+  echo "   📦  Install python 3.8.6 (AWS and GCP serverless supported runtime)"
+  echo "   🛠  Set python 3.8.6 as the default system runtime"
 }
 
 function install() {

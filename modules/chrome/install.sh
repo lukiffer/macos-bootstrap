@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   📦  Installs Google Chrome"
+  echo "   📦  Install Google Chrome"
 }
 
 function install() {

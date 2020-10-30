@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   📦  Installs 1Password"
+  echo "   📦  Install 1Password"
 }
 
 function install() {

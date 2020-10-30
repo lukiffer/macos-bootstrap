@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   📦  Installs NVM from source"
-  echo "   📦  Installs NodeJS lts/dubnium (10.x)"
-  echo "   📦  Installs NodeJS lts/erbium (12.x)"
-  echo "   📦  Installs NodeJS lts/fermium (14.x)"
-  echo "   🛠  Sets NodeJS lts/fermium as the default system runtime"
+  echo "   📦  Install NVM from source"
+  echo "   📦  Install NodeJS lts/dubnium (10.x)"
+  echo "   📦  Install NodeJS lts/erbium (12.x)"
+  echo "   📦  Install NodeJS lts/fermium (14.x)"
+  echo "   🛠  Set NodeJS lts/fermium as the default system runtime"
 }
 
 function install() {

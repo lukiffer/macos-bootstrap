@@ -20,7 +20,7 @@ function install_command_line_tools() {
     touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
     local -r product=$(softwareupdate --list | grep "\*.*Command Line" | head -n 1 | awk -F": " '{print $2}' | xargs)
     sudo softwareupdate --install "$product" --verbose
-    echo "Finishing installing macOS Command Line Tools."
+    echo "Finished installing macOS Command Line Tools."
   fi
 }
 

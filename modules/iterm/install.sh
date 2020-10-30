@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function describe_actions() {
-  echo "   📦  Installs iTerm2"
+  echo "   📦  Install iTerm2"
 }
 
 function install() {
