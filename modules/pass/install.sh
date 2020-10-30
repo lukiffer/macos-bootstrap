@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-function install_password_store() {
+function describe_actions() {
+  echo "   📦  Install the latest pass package from Homebrew"
+  echo "   🛠  Configure syncing of the passwordstore database via Dropbox"
+}
+
+function install() {
   install_homebrew_package "pass"
 
   local -r pass_config_path="$HOME/.password-store"
@@ -19,5 +24,3 @@ function install_password_store() {
     echo "Passwordstore config syncing via Dropbox enabled."
   fi
 }
-
-install_password_store "$@"

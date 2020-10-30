@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-function install_homebrew() {
+function describe_actions() {
+  echo "   📦  Install homebrew"
+  echo "   📦  Upgrade homebrew packages (optional, recommended)"
+}
+
+function install() {
   if hash brew 2>/dev/null; then
     echo "Homebrew is already installed."
   else
@@ -21,5 +26,3 @@ function install_homebrew() {
     brew upgrade
   fi
 }
-
-install_homebrew "$@"

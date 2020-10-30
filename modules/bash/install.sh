@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-function install_bash() {
-  install_homebrew_package "bash"
+function describe_actions() {
+  echo "   📦  Install the latest bash from Homebrew"
 }
 
-install_bash "$@"
+function install() {
+  install_homebrew_package "bash"
+}

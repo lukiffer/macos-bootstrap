@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-function install_gnupg() {
+function describe_actions() {
+  echo "   📦  Install the latest gnupg package from Homebrew"
+  echo "   🛠  Configure syncing of the GPG keychain via Dropbox"
+}
+
+function install() {
   install_homebrew_package "gnupg"
 
   local -r gpg_config_path="$HOME/.gnupg"
@@ -19,5 +24,3 @@ function install_gnupg() {
     echo "GPG config syncing via Dropbox enabled."
   fi
 }
-
-install_gnupg "$@"

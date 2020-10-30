@@ -11,22 +11,36 @@ function run_module() {
   local -r module_name="$1"
   local -r mutex_path="$PWD/.macosbs-mutex--$module_name"
 
-  echo "Running module $module_name..."
-
   # Check if a mutex for a module exists; don't run the same module again
   if [ -f "$mutex_path" ]; then
     echo "The module $module_name has already been run and won't be run again."
     return
   fi
 
-  # Run the module with the utilities sourced
-  bash -c ". $SCRIPT_PATH/modules/@utils/utils.sh && . $SCRIPT_PATH/modules/$module_name/install.sh"
+  # Print the module banner
+  echo "--------------------------------------------------------------------------------"
+  echo " Module: $module_name"
+  echo ""
+  echo " This module will:"
+  bash -c ". $SCRIPT_PATH/modules/$module_name/install.sh && describe_actions"
+  echo ""
+  echo "--------------------------------------------------------------------------------"
+
+  echo "Do you want to run this module? (y/N)"
+  read -r install
+
+  if [ "$install" == "y" ]; then
+    # Run the module with the utilities sourced
+    bash -c ". $SCRIPT_PATH/modules/@utils/utils.sh && . $SCRIPT_PATH/modules/$module_name/install.sh && install"
+  else
+    echo "Opted out of module $module_name"
+  fi
 
   # Write a mutex file to prevent duplicate runs of the same module
   touch "$mutex_path"
 
-  # Write a mutex file to the PWD to prevent future runs
   echo "Finished module $module_name."
+  echo ""
 }
 
 function load_environment() {
@@ -42,8 +56,11 @@ function verify_dropbox() {
   read -r use_dropbox
   if [ "$use_dropbox" == "y" ] && [ ! -f ~/.dropbox/info.json ]; then
     echo "Could not determine the location of the Dropbox mount."
-    echo "Please install and login to Dropbox to import settings and other files."
-    exit 255
+    echo "This could be because Dropbox is not installed or you're not logged in."
+    run_module "dropbox"
+    echo ""
+    echo "You'll need to sign-in to Dropbox, then re-run this script."
+    exit 0
   else
     echo "Verified Dropbox mount."
   fi
@@ -75,6 +92,33 @@ function bootstrap() {
 
   # Install and configure passwordstore
   run_module "pass"
+
+  # Install and configure CLI developer tools
+  run_module "pre-commit"
+  run_module "packer"
+  run_module "k8s"
+
+  # Install frameworks and runtimes
+  run_module "python"
+  run_module "nodejs"
+  run_module "go"
+  run_module "terraform"
+
+  # Install cloud service provider SDKs and CLI tools
+  run_module "aws-cli"
+  run_module "az"
+  run_module "gcloud"
+
+  # Install applications
+  run_module "1password"
+  run_module "chrome"
+  run_module "docker"
+  run_module "iterm"
+  run_module "vscode"
+
+  # Configure the macOS dock
+  run_module "macos-dock-clear"
+  run_module "macos-dock-autohide"
 
   echo "Completed bootstrap sequence."
 }

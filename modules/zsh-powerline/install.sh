@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-function install_zsh_powerline() {
+function describe_actions() {
+  echo "   📦  Install the powerline (powerlevel10k) plugin from source"
+  echo "   📦  Install the patched fonts for powerline"
+}
+
+function install() {
   local -r powerline_path="$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
   if [ -d "$powerline_path" ]; then
     echo "Powerline is already installed at $powerline_path."
@@ -24,5 +29,3 @@ function install_zsh_powerline() {
     echo "Powerline fonts successfully installed."
   fi
 }
-
-install_zsh_powerline "$@"

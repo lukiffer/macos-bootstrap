@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-function install_zsh() {
+function describe_actions() {
+  echo "   📦  Install the latest OhMyZSH from source"
+}
+
+function install() {
   if hash zsh 2>/dev/null; then
     echo "Zsh is already installed."
   else
@@ -9,5 +13,3 @@ function install_zsh() {
     echo "Zsh installed."
   fi
 }
-
-install_zsh "$@"

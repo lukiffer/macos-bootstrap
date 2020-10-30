@@ -48,3 +48,24 @@ function get_dropbox_mount_path() {
     echo >&2 "Could not determine the Dropbox mount path!"
   fi
 }
+
+function install_app_from_dmg() {
+  local -r dmg_url="$1"
+  local -r app_name="$2"
+  local -r mount="$HOME/.install"
+
+  echo "Downloading DMG from $dmg_url..."
+  curl -fsSL "$dmg_url" > install.dmg
+
+  echo "Mounting DMG..."
+  hdiutil attach install.dmg -mountpoint "$mount"
+
+  echo "Copying application to /Applications..."
+  cp -R "$mount/$app_name" /Applications/
+
+  echo "Unmounting DMG..."
+  hdiutil detach "$mount"
+
+  echo "Removing DMG..."
+  rm -rf install.dmg
+}
