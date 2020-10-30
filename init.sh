@@ -42,4 +42,4 @@ function init() {
   run_bootstrap
 }
 
-bootstrap "$@"
+init "$@"
