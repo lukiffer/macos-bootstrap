@@ -7,10 +7,25 @@ SCRIPT_PATH="$(
   pwd -P
 )"
 
-function confirm_run_module() {
+function run_module() {
   local -r module_name="$1"
+  local -r mutex_path="$PWD/.macosbs-mutex--$module_name"
+
   echo "Running module $module_name..."
-  bash -c "$SCRIPT_PATH/modules/$module_name/install.sh"
+
+  # Check if a mutex for a module exists; don't run the same module again
+  if [ -f "$mutex_path" ]; then
+    echo "The module $module_name has already been run and won't be run again."
+    return
+  fi
+
+  # Run the module with the utilities sourced
+  bash -c ". $SCRIPT_PATH/modules/@utils/utils.sh && . $SCRIPT_PATH/modules/$module_name/install.sh"
+
+  # Write a mutex file to prevent duplicate runs of the same module
+  touch "$mutex_path"
+
+  # Write a mutex file to the PWD to prevent future runs
   echo "Finished module $module_name."
 }
 
@@ -44,11 +59,22 @@ function bootstrap() {
 
   # Run installer modules in pre-defined order
   # We're installing homebrew first because we'll use it to install GNU versions of commands that we'll use in other modules.
-  confirm_run_module "homebrew"
-  confirm_run_module "shell-utils"
+  run_module "homebrew"
+  run_module "shell-utils"
 
   # We're installing bash to allow subsequent modules to use bash 4/5 features.
-  confirm_run_module "bash"
+  run_module "bash"
+
+  # Install OhMyZsh and related shell plugins
+  run_module "zsh"
+  run_module "zsh-powerline"
+  run_module "zsh-auto-suggestions"
+
+  # Install and configure gnupg
+  run_module "gnupg"
+
+  # Install and configure passwordstore
+  run_module "pass"
 
   echo "Completed bootstrap sequence."
 }

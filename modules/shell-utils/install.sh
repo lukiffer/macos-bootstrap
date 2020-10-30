@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1090
-source "$(dirname "$0")/../../utils/install-homebrew-package.sh"
-
 function install_shell_utils() {
   install_homebrew_package "bat"
   install_homebrew_package "dos2unix"

@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# shellcheck disable=SC1090
-source "$(dirname "$0")/../../utils/confirm-action.sh"
-
 function install_homebrew() {
   if hash brew 2>/dev/null; then
     echo "Homebrew is already installed."
