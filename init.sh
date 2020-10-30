@@ -12,14 +12,14 @@ function install_updates() {
 function install_command_line_tools() {
   echo "Checking whether macOS command line tools are installed..."
 
-  if xcode-select --print-path > /dev/null; then
+  if xcode-select --print-path &> /dev/null; then
     echo "Command Line Tools are already installed."
   else
     echo "Command Line Tools are not yet installed. Installing..."
     # Source: https://apple.stackexchange.com/a/195963/35661
     touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
     local -r product=$(softwareupdate --list | grep "\*.*Command Line" | head -n 1 | awk -F": " '{print $2}' | xargs)
-    softwareupdate --install -- "$product" --verbose
+    sudo softwareupdate --install "$product" --verbose
     echo "Finishing installing macOS Command Line Tools."
   fi
 }
