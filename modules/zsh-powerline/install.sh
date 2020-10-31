@@ -3,6 +3,8 @@
 function describe_actions() {
   echo "   📦  Install the powerline (powerlevel10k) plugin from source"
   echo "   📦  Install the patched fonts for powerline"
+  echo "   ❌  Remove existing powerline configuration"
+  echo "   🛠  Configure syncing of powerline config via Dropbox"
 }
 
 function install() {
@@ -28,4 +30,17 @@ function install() {
     curl -L "$font_repo/MesloLGS%20NF%20Bold%20Italic.ttf" > "$font_path/MesloLGS NF Bold Italic.ttf"
     echo "Powerline fonts successfully installed."
   fi
+
+  echo "Removing existing .p10k.zsh..."
+  rm -rf "$HOME/.p10k.zsh"
+  echo "Existing .p10k.zsh removed."
+
+  echo "Symlinking .p10k.zsh to Dropbox"
+  local -r dropbox_mount_path=$(get_dropbox_mount_path)
+  if [ -z "$dropbox_mount_path" ]; then
+    exit 1
+  fi
+
+  ln -s "$dropbox_mount_path/.p10k.zsh" "$HOME/.p10k.zsh"
+  echo "Powerline config syncing via Dropbox enabled."
 }
