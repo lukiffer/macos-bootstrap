@@ -91,6 +91,9 @@ function bootstrap() {
   # Install and configure gnupg
   run_module "gnupg"
 
+  # Configure syncing of .gitconfig
+  run_module "git-config"
+
   # Install and configure passwordstore
   run_module "pass"
 
@@ -111,14 +114,23 @@ function bootstrap() {
   run_module "gcloud"
 
   # Install applications
+  run_module "mas"
   run_module "1password"
   run_module "chrome"
   run_module "bartender"
   run_module "alfred"
+  run_module "magnet"
   run_module "docker"
   run_module "iterm"
+  run_module "synalyze-it-pro"
+  run_module "kaleidoscope"
   run_module "vscode"
   run_module "jetbrains-toolbox"
+  run_module "xcode"
+  run_module "menubar-clock"
+  run_module "integrity-pro"
+  run_module "slack"
+  run_module "microsoft-remote-desktop"
 
   # Configure the macOS settings
   run_module "macos-dock-clear"
