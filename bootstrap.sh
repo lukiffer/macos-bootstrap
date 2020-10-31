@@ -113,13 +113,20 @@ function bootstrap() {
   # Install applications
   run_module "1password"
   run_module "chrome"
+  run_module "bartender"
+  run_module "alfred"
   run_module "docker"
   run_module "iterm"
   run_module "vscode"
+  run_module "jetbrains-toolbox"
 
-  # Configure the macOS dock
+  # Configure the macOS settings
   run_module "macos-dock-clear"
   run_module "macos-dock-autohide"
+  run_module "macos-disable-natural-scrolling"
+
+  # Remove bloatware
+  run_module "macos-remove-builtin-apps"
 
   echo "Completed bootstrap sequence."
 }

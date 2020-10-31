@@ -8,6 +8,7 @@ function describe_actions() {
   echo "   📦  Install the latest jq package from Homebrew"
   echo "   📦  Install the latest netcat package from Homebrew"
   echo "   📦  Install the latest rpm package from Homebrew"
+  echo "   📦  Install the latest shellcheck package from Homebrew"
   echo "   📦  Install the latest sops package from Homebrew"
 }
 
@@ -19,5 +20,6 @@ function install() {
   install_homebrew_package "jq"
   install_homebrew_package "netcat"
   install_homebrew_package "rpm"
+  install_homebrew_package "shellcheck"
   install_homebrew_package "sops"
 }
