@@ -19,6 +19,7 @@ function install() {
   install_homebrew_package "ipcalc"
   install_homebrew_package "jq"
   install_homebrew_package "netcat"
+  install_homebrew_package "powershell"
   install_homebrew_package "rpm"
   install_homebrew_package "shellcheck"
   install_homebrew_package "sops"

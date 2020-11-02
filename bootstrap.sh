@@ -97,6 +97,9 @@ function bootstrap() {
   # Install and configure passwordstore
   run_module "pass"
 
+  # Configure SSH key and config synchronization
+  run_module "ssh"
+
   # Install and configure CLI developer tools
   run_module "pre-commit"
   run_module "packer"
