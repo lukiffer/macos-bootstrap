@@ -132,6 +132,7 @@ function bootstrap() {
   run_module "xcode"
   run_module "menubar-clock"
   run_module "integrity-pro"
+  run_module "postman"
   run_module "slack"
   run_module "microsoft-remote-desktop"
 
