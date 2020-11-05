@@ -127,6 +127,7 @@ function bootstrap() {
   run_module "iterm"
   run_module "synalyze-it-pro"
   run_module "kaleidoscope"
+  run_module "keybase"
   run_module "vscode"
   run_module "jetbrains-toolbox"
   run_module "xcode"
