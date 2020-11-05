@@ -136,6 +136,9 @@ function bootstrap() {
   run_module "slack"
   run_module "microsoft-remote-desktop"
 
+  # Install other utilities
+  run_module "displayplacer"
+
   # Configure the macOS settings
   run_module "macos-dock-clear"
   run_module "macos-dock-autohide"
