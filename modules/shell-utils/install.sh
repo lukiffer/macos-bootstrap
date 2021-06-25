@@ -10,6 +10,7 @@ function describe_actions() {
   echo "   📦  Install the latest rpm package from Homebrew"
   echo "   📦  Install the latest shellcheck package from Homebrew"
   echo "   📦  Install the latest sops package from Homebrew"
+  echo "   📦  Install the latest watch package from Homebrew"
 }
 
 function install() {
@@ -23,4 +24,5 @@ function install() {
   install_homebrew_package "rpm"
   install_homebrew_package "shellcheck"
   install_homebrew_package "sops"
+  isntall_homebrew_package "watch"
 }
