@@ -2,6 +2,7 @@
 
 function describe_actions() {
   echo "   📦  Install the latest bat package from Homebrew"
+  echo "   📦  Install the latest coreutils package from Homebrew"
   echo "   📦  Install the latest dos2unix package from Homebrew"
   echo "   📦  Install the latest gnu-sed package from Homebrew"
   echo "   📦  Install the latest ipcalc package from Homebrew"
@@ -24,5 +25,5 @@ function install() {
   install_homebrew_package "rpm"
   install_homebrew_package "shellcheck"
   install_homebrew_package "sops"
-  isntall_homebrew_package "watch"
+  install_homebrew_package "watch"
 }
