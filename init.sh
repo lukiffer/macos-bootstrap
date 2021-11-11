@@ -24,6 +24,20 @@ function install_command_line_tools() {
   fi
 }
 
+function install_rosetta() {
+  processor=$(/usr/sbin/sysctl -n machdep.cpu.brand_string | grep -o "Intel")
+  if [[ -n "$processor" ]]; then
+    echo "$processor processor installed. Skipping Rosetta installation."
+  else
+    if /usr/bin/pgrep oahd >/dev/null 2>&1; then
+      echo "Rosetta is already installed and running."
+    else
+      /usr/sbin/softwareupdate --install-rosetta --agree-to-license
+      echo "Rosetta has been successfully installed."
+    fi
+  fi
+}
+
 function clone_repository() {
   echo "Cloning bootstrap repository from GitHub..."
   git clone "$REPOSITORY_URL" "$REPOSITORY_PATH"
@@ -41,6 +55,7 @@ function run_bootstrap() {
 function init() {
   install_updates
   install_command_line_tools
+  install_rosetta
   clone_repository
   run_bootstrap
 }
