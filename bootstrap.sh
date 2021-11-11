@@ -60,6 +60,7 @@ function init_dotfiles() {
   read -r dotfile_sync
 
   if [ "$dotfile_sync" == "1" ]; then
+    echo "Using Dropbox for dotfile synchronization."
     if [ ! -f ~/.dropbox/info.json ]; then
       echo "Could not determine the location of the Dropbox mount."
       echo "This could be because Dropbox is not installed or you're not logged in."
@@ -70,13 +71,15 @@ function init_dotfiles() {
       exit 0
     else
       echo "Verified Dropbox mount."
-      DOTFILE_BASE_PATH=$(jq -r '.personal.path' < "$HOME/.dropbox/info.json")
-      export DOTFILE_BASE_PATH
+      DOTFILES_BASE_PATH=$(jq -r '.personal.path' < "$HOME/.dropbox/info.json")
+      export DOTFILES_BASE_PATH
     fi
   elif [ "$dotfile_sync" == "2" ]; then
-    export DOTFILE_BASE_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+    echo "Using iCloud Drive for dotfile synchronization."
+    export DOTFILES_BASE_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
   else
-    export DOTFILE_BASE_PATH="$HOME"
+    echo "Dotfile synchronization disabled (using local default paths)."
+    export DOTFILES_BASE_PATH="$HOME"
   fi
 }
 
