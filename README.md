@@ -6,7 +6,7 @@ Using this tool makes it easy to:
 - Uninstall most bloatware included in macOS
 - Install the Homebrew packages you need
 - Install alternative shells (such as ZSH and Bash 5)
-- Configure Dropbox for syncing your dotfiles
+- Configure syncing your dotfiles
 - Install applications
 - Set user preferences
 

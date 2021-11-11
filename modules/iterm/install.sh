@@ -2,7 +2,7 @@
 
 function describe_actions() {
   echo "   📦  Install iTerm2"
-  echo "   🛠  Configure syncing of iTerm configuration via Dropbox"
+  echo "   🛠  Configure syncing of iTerm configuration"
 }
 
 function install() {
@@ -14,8 +14,8 @@ function install() {
     brew cask install iterm2
     echo "iTerm2 installed."
 
-    echo "Configuring iTerm preferences syncing via Dropbox..."
-    defaults write com.googlecode.iterm2 PrefsCustomFolder "$HOME/Dropbox/Settings/iTerm2"
+    echo "Configuring iTerm preferences syncing..."
+    defaults write com.googlecode.iterm2 PrefsCustomFolder "$DOTFILES_BASE_PATH/Settings/iTerm2"
     echo "Syncing of iTerm preferences enabled."
   fi
 }

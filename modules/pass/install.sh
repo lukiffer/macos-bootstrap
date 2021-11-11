@@ -2,7 +2,7 @@
 
 function describe_actions() {
   echo "   📦  Install the latest pass package from Homebrew"
-  echo "   🛠  Configure syncing of the passwordstore database via Dropbox"
+  echo "   🛠  Configure syncing of the passwordstore database"
 }
 
 function install() {
@@ -12,15 +12,7 @@ function install() {
   if [ -d "$pass_config_path" ]; then
     echo "Passwordstore configuration already exists at $pass_config_path"
   else
-    echo "Symlinking passwordstore configuration to Dropbox..."
-
-    local -r dropbox_mount_path=$(get_dropbox_mount_path)
-    if [ -z "$dropbox_mount_path" ]; then
-      exit 1
-    fi
-
-    ln -s "$dropbox_mount_path/.password-store" "$pass_config_path"
-
-    echo "Passwordstore config syncing via Dropbox enabled."
+    echo "Symlinking passwordstore configuration to $DOTFILES_BASE_PATH..."
+    ln -s "$DOTFILES_BASE_PATH/.password-store" "$pass_config_path"
   fi
 }

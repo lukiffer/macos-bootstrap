@@ -51,19 +51,32 @@ function load_environment() {
   fi
 }
 
-function verify_dropbox() {
-  echo "Do you want to use Dropbox to store and sync your dotfiles? (y/N)"
-  read -r use_dropbox
-  if [ "$use_dropbox" == "y" ] && [ ! -f ~/.dropbox/info.json ]; then
-    echo "Could not determine the location of the Dropbox mount."
-    echo "This could be because Dropbox is not installed or you're not logged in."
-    run_module "dropbox"
-    echo ""
-    echo "You'll need to sign-in to Dropbox, then re-run this script:"
-    echo "  ~/.macos-bootstrap/bootstrap.sh"
-    exit 0
+function init_dotfiles() {
+  echo "Which service do you want to use to sync your dotfiles?"
+  echo "    [0] Do not sync (local only, default locations)"
+  echo "    [1] Dropbox"
+  echo "    [2] iCloud Drive"
+  echo ""
+  read -r dotfile_sync
+
+  if [ "$dotfile_sync" == "1" ]; then
+    if [ ! -f ~/.dropbox/info.json ]; then
+      echo "Could not determine the location of the Dropbox mount."
+      echo "This could be because Dropbox is not installed or you're not logged in."
+      run_module "dropbox"
+      echo ""
+      echo "You'll need to sign-in to Dropbox, then re-run this script:"
+      echo "  ~/.macos-bootstrap/bootstrap.sh"
+      exit 0
+    else
+      echo "Verified Dropbox mount."
+      DOTFILE_BASE_PATH=$(jq -r '.personal.path' < "$HOME/.dropbox/info.json")
+      export DOTFILE_BASE_PATH
+    fi
+  elif [ "$dotfile_sync" == "2" ]; then
+    export DOTFILE_BASE_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
   else
-    echo "Verified Dropbox mount."
+    export DOTFILE_BASE_PATH="$HOME"
   fi
 }
 
@@ -72,8 +85,8 @@ function bootstrap() {
   # Load environment file if it exists
   load_environment
 
-  # Verify that Dropbox is installed (optional)
-  verify_dropbox
+  # Initialize dotfiles from sync source
+  init_dotfiles
 
   # Run installer modules in pre-defined order
   # We're installing homebrew first because we'll use it to install GNU versions of commands that we'll use in other modules.

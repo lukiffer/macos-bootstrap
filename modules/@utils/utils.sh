@@ -27,14 +27,6 @@ function install_homebrew_package() {
   brew install "$package_name"
 }
 
-function get_dropbox_mount_path() {
-  if [ -f ~/.dropbox/info.json ]; then
-    jq -r '.personal.path' < ~/.dropbox/info.json
-  else
-    echo >&2 "Could not determine the Dropbox mount path!"
-  fi
-}
-
 function install_app_from_dmg() {
   local -r dmg_url="$1"
   local -r app_name="$2"

@@ -4,7 +4,7 @@ function describe_actions() {
   echo "   📦  Install the latest Oh My Zsh from source"
   echo "   🛠  Set appropriate permissions on /usr/local/share/zsh"
   echo "   ❌  Remove existing .zshrc configuration"
-  echo "   🛠  Configure syncing of .zshrc via Dropbox"
+  echo "   🛠  Configure syncing of .zshrc"
 }
 
 function install() {
@@ -23,13 +23,7 @@ function install() {
   rm -rf "$HOME/.zshrc"
   echo "Existing .zshrc removed."
 
-  echo "Symlinking .zshrc to Dropbox"
-  local -r dropbox_mount_path=$(get_dropbox_mount_path)
-  if [ -z "$dropbox_mount_path" ]; then
-    exit 1
-  fi
-
-  ln -s "$dropbox_mount_path/.zshrc" "$HOME/.zshrc"
-  chmod -h 600 "$dropbox_mount_path/.zshrc"
-  echo ".zshrc syncing via Dropbox enabled."
+  echo "Symlinking .zshrc to $DOTFILES_BASE_PATH"
+  ln -s "$DOTFILES_BASE_PATH/.zshrc" "$HOME/.zshrc"
+  chmod -h 600 "$DOTFILES_BASE_PATH/.zshrc"
 }
