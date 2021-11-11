@@ -8,7 +8,11 @@ function describe_actions() {
 function install() {
   echo "Symlinking .ssh folder to $DOTFILES_BASE_PATH..."
   ln -s "$DOTFILES_BASE_PATH/.ssh/" "$HOME/.ssh"
+  chmod -R 600 "$DOTFILES_BASE_PATH/.ssh"
+  chmod 644 "$DOTFILES_BASE_PATH/.ssh/*.pub"
+  chmod 644 "$DOTFILES_BASE_PATH/.ssh/config"
+  chmod 644 "$DOTFILES_BASE_PATH/.ssh/known_hosts"
 
   echo "Configuring ssh-agent to use macOS keychain..."
-  ssh-add -K
+  ssh-add --apple-use-keychain
 }
