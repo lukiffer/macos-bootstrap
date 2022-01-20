@@ -131,6 +131,7 @@ function bootstrap() {
   run_module "aws-cli"
   run_module "az"
   run_module "gcloud"
+  run_module "gh"
 
   # Install applications
   run_module "mas"

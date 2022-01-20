@@ -15,6 +15,7 @@ function describe_actions() {
 
 function install() {
   install_homebrew_package "bat"
+  install_homebrew_package "coreutils"
   install_homebrew_package "dos2unix"
   install_homebrew_package "gnu-sed"
   install_homebrew_package "ipcalc"
