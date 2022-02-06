@@ -120,6 +120,7 @@ function bootstrap() {
   run_module "pre-commit"
   run_module "packer"
   run_module "k8s"
+  run_module "helm"
 
   # Install frameworks and runtimes
   run_module "python"
