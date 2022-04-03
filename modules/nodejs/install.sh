@@ -2,10 +2,9 @@
 
 function describe_actions() {
   echo "   📦  Install NVM from source"
-  echo "   📦  Install NodeJS lts/dubnium (10.x)"
-  echo "   📦  Install NodeJS lts/erbium (12.x)"
   echo "   📦  Install NodeJS lts/fermium (14.x)"
-  echo "   🛠  Set NodeJS lts/fermium as the default system runtime"
+  echo "   📦  Install NodeJS lts/gallium (16.x)"
+  echo "   🛠  Set NodeJS lts/gallium as the default system runtime"
 }
 
 function install() {
@@ -14,14 +13,13 @@ function install() {
 
   echo "Loading NVM..."
   export NVM_DIR="$HOME/.nvm"
-  # shellcheck disable=SC1090
+  # shellcheck disable=SC1091
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
   echo "Installing NodeJS runtimes..."
-  nvm install lts/dubnium
-  nvm install lts/erbium
   nvm install lts/fermium
+  nvm install lts/gallium
 
-  echo "Setting default NodeJS runtime to lts/fermium"
-  nvm "alias" default lts/fermium
+  echo "Setting default NodeJS runtime to lts/gallium"
+  nvm "alias" default lts/gallium
 }
