@@ -16,7 +16,7 @@ dependencies included in macOS or installed by a core module (e.g. Homebrew).
 ## Usage
 
 ```bash
-bash -c "$(curl -sL https://raw.githubusercontent.com/lukiffer/macos-bootstrap/master/init.sh)"
+bash -c "$(curl -sL https://raw.githubusercontent.com/lukiffer/macos-bootstrap/main/init.sh)"
 ```
 
 The [`init.sh`](./init.sh) script will install macOS Command Line Tools (if they're not already installed), then clone
