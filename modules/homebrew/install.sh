@@ -10,6 +10,13 @@ function install() {
     echo "Homebrew is already installed."
   else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+    # We'll use the default `.zprofile` to make sure we can use homebrew from a vanilla base install.
+    # The assumption is that the preferred config will be symlinked in a later step.
+    /opt/homebrew/bin/brew shellenv >> "$HOME/.zprofile"
+
+    # shellcheck disable=SC1091
+    source "$HOME/.zprofile"
   fi
 
   echo "Updating Homebrew..."
