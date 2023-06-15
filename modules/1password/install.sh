@@ -10,7 +10,7 @@ function install() {
   curl -o- https://downloads.1password.com/mac/1Password.pkg > "1Password.pkg"
 
   echo "Installing 1Password application..."
-  sudo isntaller -pkg "1Password.pkg" -target /
+  sudo installer -pkg "1Password.pkg" -target /
 
   echo "Removing 1Password installer..."
   rm "1Password.pkg"
