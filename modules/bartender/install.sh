@@ -6,7 +6,7 @@ function describe_actions() {
 
 function install() {
   echo "Finding latest version..."
-  local -r url=$(curl -sSL https://www.macbartender.com/ |  grep 'id="downloadButtonNav"' | sed 's/.* href=\"\([^"]\+\)\".*/\1/')
+  local -r url=$(curl -sSL https://www.macbartender.com/ |  grep 'id="downloadButtonNav"' | cut -d'"' -f 2)
 
   echo "Installing Bartender application..."
   install_app_from_dmg "$url" "Bartender 4.app"
