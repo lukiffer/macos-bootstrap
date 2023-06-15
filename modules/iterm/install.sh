@@ -11,7 +11,7 @@ function install() {
     echo "iTerm2 is already installed at $iterm_path"
   else
     echo "Installing iTerm2..."
-    brew cask install iterm2
+    brew install --cask iterm2
     echo "iTerm2 installed."
 
     echo "Configuring iTerm preferences syncing..."
