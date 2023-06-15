@@ -52,11 +52,11 @@ function load_environment() {
 }
 
 function init_dotfiles() {
-  echo "Do you want to use iCloud Drive to sync your dotfiles? (yes/no)"
+  echo "Do you want to use iCloud Drive to sync your dotfiles? (y/N)"
   echo ""
   read -r dotfile_sync
 
-  if [ "$dotfile_sync" == "yes" ]; then
+  if [ "$dotfile_sync" == "y" ]; then
     echo "Using iCloud Drive for dotfile synchronization."
     export DOTFILES_BASE_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
   else
