@@ -19,9 +19,10 @@ function install() {
   # Install pipx
   brew install pipx
 
-  local -r version=$(curl -sSL https://www.python.org/ftp/python/ | sed -n 's!.*href="\([0-9]\+\.[0-9]\+\.[0-9]\+\)/".*!\1!p' | sort -rV | head -n 1)
+  # We're using pyenv to list available versions instead of python.org because pyenv isn't always current.
+  local -r version=$(pyenv install --list | grep '^[ ]*[0-9]\+\.[0-9]\+\.[0-9]\+$' | sort -rV | head -n 1)
 
-  # Install python 3.8.6
+  # Install latest available python version
   pyenv install "$version"
 
   set -e
