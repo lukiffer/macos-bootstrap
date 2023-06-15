@@ -9,7 +9,7 @@ function install() {
   if hash brew 2>/dev/null; then
     echo "Homebrew is already installed."
   else
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
   echo "Updating Homebrew..."
