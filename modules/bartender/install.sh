@@ -5,18 +5,9 @@ function describe_actions() {
 }
 
 function install() {
-  echo "Downloading Bartender application archive..."
-  curl -o- https://www.macbartender.com/Demo/Bartender%203.zip > bartender.zip
-
-  echo "Unzipping the Bartender archive..."
-  unzip bartender.zip
+  echo "Finding latest version..."
+  local -r url=$(curl -sSL https://www.macbartender.com/ |  grep 'id="downloadButtonNav"' | sed 's/.* href=\"\([^"]\+\)\".*/\1/')
 
   echo "Installing Bartender application..."
-  mv Bartender\ 3.app /Applications
-
-  echo "Launching Bartender..."
-  open /Applications/Bartender\ 3.app
-
-  echo "Cleaning up..."
-  rm -rf __MACOSX
+  install_app_from_dmg "$url" "Bartender 4.app"
 }

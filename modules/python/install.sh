@@ -4,8 +4,8 @@ function describe_actions() {
   echo "   🛠  Unlink current python installation"
   echo "   📦  Install the latest pyenv package from Homebrew"
   echo "   📦  Install the latest pipx package from Homebrew"
-  echo "   📦  Install python 3.8.6 (AWS and GCP serverless supported runtime)"
-  echo "   🛠  Set python 3.8.6 as the default system runtime"
+  echo "   📦  Install latest Python 3 version"
+  echo "   🛠  Set the default system runtime"
 }
 
 function install() {
@@ -19,11 +19,13 @@ function install() {
   # Install pipx
   brew install pipx
 
+  local -r version=$(curl -sSL https://www.python.org/ftp/python/ | sed -n 's!.*href="\([0-9]\+\.[0-9]\+\.[0-9]\+\)/".*!\1!p' | sort -rV | head -n 1)
+
   # Install python 3.8.6
-  pyenv install 3.8.6
+  pyenv install "$version"
 
   set -e
   pushd "$HOME"
-    pyenv "local" 3.8.6
+    pyenv "local" "$version"
   popd
 }
