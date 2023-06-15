@@ -20,7 +20,7 @@ function install() {
   brew install pipx
 
   # We're using pyenv to list available versions instead of python.org because pyenv isn't always current.
-  local -r version=$(pyenv install --list | grep '^[ ]*[0-9]\+\.[0-9]\+\.[0-9]\+$' | sort -rV | head -n 1)
+  local -r version=$(pyenv install --list | grep '^[ ]*[0-9]\+\.[0-9]\+\.[0-9]\+$' | sort -rV | head -n 1 | xargs)
 
   # Install latest available python version
   pyenv install "$version"
