@@ -119,6 +119,7 @@ function bootstrap() {
 
   # Install applications
   run_module "mas"
+  run_module "raycast"
   run_module "1password"
   run_module "chrome"
   run_module "bartender"
