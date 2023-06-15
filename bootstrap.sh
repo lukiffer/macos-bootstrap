@@ -52,29 +52,11 @@ function load_environment() {
 }
 
 function init_dotfiles() {
-  echo "Which service do you want to use to sync your dotfiles?"
-  echo "    [0] Do not sync (local only, default locations)"
-  echo "    [1] Dropbox"
-  echo "    [2] iCloud Drive"
+  echo "Do you want to use iCloud Drive to sync your dotfiles? (yes/no)"
   echo ""
   read -r dotfile_sync
 
-  if [ "$dotfile_sync" == "1" ]; then
-    echo "Using Dropbox for dotfile synchronization."
-    if [ ! -f ~/.dropbox/info.json ]; then
-      echo "Could not determine the location of the Dropbox mount."
-      echo "This could be because Dropbox is not installed or you're not logged in."
-      run_module "dropbox"
-      echo ""
-      echo "You'll need to sign-in to Dropbox, then re-run this script:"
-      echo "  ~/.macos-bootstrap/bootstrap.sh"
-      exit 0
-    else
-      echo "Verified Dropbox mount."
-      DOTFILES_BASE_PATH=$(jq -r '.personal.path' < "$HOME/.dropbox/info.json")
-      export DOTFILES_BASE_PATH
-    fi
-  elif [ "$dotfile_sync" == "2" ]; then
+  if [ "$dotfile_sync" == "yes" ]; then
     echo "Using iCloud Drive for dotfile synchronization."
     export DOTFILES_BASE_PATH="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
   else
@@ -140,7 +122,6 @@ function bootstrap() {
   run_module "1password"
   run_module "chrome"
   run_module "bartender"
-  run_module "alfred"
   run_module "magnet"
   run_module "docker"
   run_module "iterm"
@@ -148,7 +129,6 @@ function bootstrap() {
   run_module "kaleidoscope"
   run_module "keybase"
   run_module "vscode"
-  run_module "jetbrains-toolbox"
   run_module "xcode"
   run_module "menubar-clock"
   run_module "integrity-pro"
