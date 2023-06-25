@@ -143,6 +143,7 @@ function bootstrap() {
   run_module "macos-dock-clear"
   run_module "macos-dock-autohide"
   run_module "macos-disable-natural-scrolling"
+  run_module "macos-show-hidden-files"
 
   # Remove bloatware
   run_module "macos-remove-builtin-apps"
