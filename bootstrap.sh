@@ -101,6 +101,7 @@ function bootstrap() {
   # Install and configure CLI developer tools
   run_module "pre-commit"
   run_module "git-crypt"
+  run_module "hunspell"
   run_module "packer"
   run_module "k8s"
 
